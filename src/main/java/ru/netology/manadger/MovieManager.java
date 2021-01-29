@@ -8,7 +8,7 @@ public class MovieManager {
     private final int arrayLenght;
 
     public MovieManager() {
-        this.arrayLenght = 10;
+        this.arrayLenght = 11;
     }
 
 

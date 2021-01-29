@@ -17,24 +17,12 @@ class MovieManagerTest {
     private final MovieItem film9 = new MovieItem(9, 9, "Road", "western", 2010);
     private final MovieItem film10 = new MovieItem(10, 10, "Smile", "comedy", 2019);
     private final MovieItem film11 = new MovieItem(11, 11, "Kiss", "melodrama", 2010);
-//@BeforeEach
-    //  public void setup(){
-    //  manager.add(film1);
-    //   manager.add(film2);
-//    manager.add(film3);
-    //   manager.add(film4);
-    //  manager.add(film5);
-    // manager.add(film6);
-    //  manager.add(film7);
-    //  manager.add(film8);
-    //  manager.add(film9);
-    //  manager.add(film10);
-    //  manager.add(film11);
+
 
     @Test
     public void shouldGetFastFilm() {
         MovieManager manager = new MovieManager();
-        manager.add(film1);
+        manager.add(film11);
         manager.add(film2);
         manager.add(film3);
         manager.add(film4);
@@ -46,8 +34,52 @@ class MovieManagerTest {
         manager.add(film10);
 
         MovieItem[] actual = manager.getFast();
-        MovieItem[] expected = new MovieItem[]{film1, film2, film3, film4, film5, film6, film7, film8, film9, film10};
+        MovieItem[] expected = new MovieItem[]{film11, film2, film3, film4, film5, film6, film7, film8, film9, film10};
 
+
+        assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void ReturnLessThan10() {
+        MovieManager manager = new MovieManager();
+        manager.add(film1);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+        manager.add(film5);
+        manager.add(film6);
+        manager.add(film7);
+        manager.add(film8);
+
+        MovieItem[] actual = manager.getFast();
+        MovieItem[] expected = new MovieItem[]{film8, film7, film6, film5, film4, film3, film2, film1};
+
+        assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void Return4() {
+        MovieManager manager = new MovieManager(4);
+        manager.add(film1);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+        manager.add(film5);
+
+        MovieItem[] actual = manager.getFast();
+        MovieItem[] expected = new MovieItem[]{film5, film4, film3, film2};
+
+        assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void ReturnLessThan5() {
+        MovieManager manager = new MovieManager(4);
+        manager.add(film1);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+
+        MovieItem[] actual = manager.getFast();
+        MovieItem[] expected = new MovieItem[]{film4, film3, film2, film1};
 
         assertArrayEquals(expected, actual);
     }
