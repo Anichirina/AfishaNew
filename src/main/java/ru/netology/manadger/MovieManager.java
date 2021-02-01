@@ -3,15 +3,10 @@ package ru.netology.manadger;
 import ru.netology.domain.MovieItem;
 
 public class MovieManager {
-
     private MovieItem[] items = new MovieItem[0];
-    private final int arrayLenght;
-
+    private int arrayLenght = 10;
     public MovieManager() {
-        this.arrayLenght = 11;
     }
-
-
     public MovieManager(int arrayLenght) {
         this.arrayLenght = arrayLenght;
     }
@@ -27,16 +22,15 @@ public class MovieManager {
     }
 
 
-    public MovieItem[] getFast() {
-        int lenght = Math.min(items.length, arrayLenght);
-        MovieItem[] result = new MovieItem[lenght];
-        for (int i = 0; i < lenght; i++) {
+    public MovieItem[] getFast(int arrayLenght) {
+        int numFilm = Math.min(items.length, arrayLenght);
+        MovieItem[] result = new MovieItem[numFilm];
+        for (int i = 0; i < result.length; i++) {
             int index = items.length - i - 1;
             result[i] = items[index];
         }
         return result;
     }
-
 
 
 }
