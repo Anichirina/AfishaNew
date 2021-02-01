@@ -33,12 +33,12 @@ class CartManagerTestNonEmptyWithSetup {
 
     @Test
     public void shouldNotRemoveIfNotExists() {
-        int idToRemove = 4;
+        int idToRemove = 3;
 
         manager.removeById(idToRemove);
 
         PurchaseItem[] actual = manager.getAll();
-        PurchaseItem[] expected = new PurchaseItem[]{third, second, first};
+        PurchaseItem[] expected = new PurchaseItem[]{second, first};
 
         assertArrayEquals(expected, actual);
     }
