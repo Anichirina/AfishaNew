@@ -1,14 +1,15 @@
 package ru.netology.manadger;
 
 import ru.netology.domain.MovieItem;
+import ru.netology.repository.MovieRepository;
 
 public class MovieManager {
     private MovieItem[] items = new MovieItem[0];
-    private int arrayLenght = 10;
+    private int limitFilms = 10;
     public MovieManager() {
     }
-    public MovieManager(int arrayLenght) {
-        this.arrayLenght = arrayLenght;
+    public MovieManager(int limitFilm) {
+        this.limitFilms = limitFilm;
     }
 
     public void add(MovieItem item) {
@@ -22,8 +23,8 @@ public class MovieManager {
     }
 
 
-    public MovieItem[] getFast(int arrayLenght) {
-        int numFilm = Math.min(items.length, arrayLenght);
+    public MovieItem[] takeTheLatestMovie(int limitFilms) {
+        int numFilm = Math.min(items.length, limitFilms);
         MovieItem[] result = new MovieItem[numFilm];
         for (int i = 0; i < result.length; i++) {
             int index = items.length - i - 1;

@@ -37,14 +37,14 @@ class MovieManagerTest {
 
     @Test
     public void shouldGetFastFilm() {
-        MovieItem[] actual = manager.getFast(10);
+        MovieItem[] actual = manager.takeTheLatestMovie(10);
         MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3, film2, film11};
         assertArrayEquals(expected, actual);
     }
     @Test
     public void ReturnLessThan10() {
 
-        MovieItem[] actual = manager.getFast(8);
+        MovieItem[] actual = manager.takeTheLatestMovie(8);
         MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3};
 
         assertArrayEquals(expected, actual);
@@ -52,7 +52,7 @@ class MovieManagerTest {
     @Test
     public void Return4() {
 
-        MovieItem[] actual = manager.getFast(4);
+        MovieItem[] actual = manager.takeTheLatestMovie(4);
         MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7};
 
         assertArrayEquals(expected, actual);
@@ -60,9 +60,15 @@ class MovieManagerTest {
     @Test
     public void ReturnLessThan5() {
 
-        MovieItem[] actual = manager.getFast(4);
+        MovieItem[] actual = manager.takeTheLatestMovie(4);
         MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7};
 
+        assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void moreThanLimit10Films() {
+        MovieItem[] actual = manager.takeTheLatestMovie(11);
+        MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3, film2, film11, film1 };
         assertArrayEquals(expected, actual);
     }
 }
