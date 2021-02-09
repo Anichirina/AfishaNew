@@ -1,7 +1,7 @@
 package ru.netology.manadger;
 
 import ru.netology.domain.MovieItem;
-import ru.netology.repository.MovieRepository;
+
 
 public class MovieManager {
     private MovieItem[] items = new MovieItem[0];
