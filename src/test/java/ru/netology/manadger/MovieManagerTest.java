@@ -3,6 +3,7 @@ package ru.netology.manadger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.MovieItem;
+import ru.netology.domain.PurchaseItem;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -37,39 +38,90 @@ class MovieManagerTest {
 
     @Test
     public void shouldGetFastFilm() {
-        MovieItem[] actual = manager.takeTheLatestMovie(10);
+        MovieItem[] actual = manager.takeTheLatestMovie();
         MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3, film2, film11};
         assertArrayEquals(expected, actual);
     }
+
     @Test
     public void ReturnLessThan10() {
-
-        MovieItem[] actual = manager.takeTheLatestMovie(8);
+        MovieManager manager = new MovieManager(8);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+        manager.add(film5);
+        manager.add(film6);
+        manager.add(film7);
+        manager.add(film8);
+        manager.add(film9);
+        manager.add(film10);
+        MovieItem[] actual = manager.takeTheLatestMovie();
         MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3};
 
         assertArrayEquals(expected, actual);
     }
+
     @Test
     public void Return4() {
-
-        MovieItem[] actual = manager.takeTheLatestMovie(4);
-        MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7};
+        MovieManager manager = new MovieManager(3);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+        manager.add(film5);
+        manager.add(film6);
+        manager.add(film7);
+        manager.add(film8);
+        manager.add(film9);
+        manager.add(film10);
+        manager.takeTheLatestMovie();
+        MovieItem[] actual = manager.takeTheLatestMovie();
+        MovieItem[] expected = new MovieItem[]{film10, film9, film8};
 
         assertArrayEquals(expected, actual);
     }
+
     @Test
     public void ReturnLessThan5() {
-
-        MovieItem[] actual = manager.takeTheLatestMovie(4);
+        MovieManager manager = new MovieManager(4);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+        manager.add(film5);
+        manager.add(film6);
+        manager.add(film7);
+        manager.add(film8);
+        manager.add(film9);
+        manager.add(film10);
+        MovieItem[] actual = manager.takeTheLatestMovie();
         MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7};
 
         assertArrayEquals(expected, actual);
     }
+
     @Test
     public void moreThanLimit10Films() {
-        MovieItem[] actual = manager.takeTheLatestMovie(11);
-        MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3, film2, film11, film1 };
+        MovieManager manager = new MovieManager(11);
+        manager.add(film1);
+        manager.add(film11);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+        manager.add(film5);
+        manager.add(film6);
+        manager.add(film7);
+        manager.add(film8);
+        manager.add(film9);
+        manager.add(film10);
+        MovieItem[] actual = manager.takeTheLatestMovie();
+        MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3, film2, film11, film1};
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldGetAll() {
+        MovieItem[] actual = manager.getAll();
+        MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3, film2, film1, film11};
+    }
+
 }
 

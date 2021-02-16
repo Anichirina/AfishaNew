@@ -4,31 +4,40 @@ import ru.netology.domain.MovieItem;
 
 
 public class MovieManager {
-    private MovieItem[] items = new MovieItem[0];
+    private MovieItem[] films = new MovieItem[0];
     private int limitFilms = 10;
     public MovieManager() {
     }
-    public MovieManager(int limitFilm) {
-        this.limitFilms = limitFilm;
+    public MovieManager(int limitFilms) {
+        this.limitFilms = limitFilms;
     }
 
     public void add(MovieItem item) {
-        int length = items.length + 1;
+        int length = films.length + 1;
         MovieItem[] tmp = new MovieItem[length];
-        System.arraycopy(items, 0, tmp, 0, items.length);
+        System.arraycopy(films,0, tmp,0,films.length);
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = item;
-        items = tmp;
+        films = tmp;
 
     }
 
+    public MovieItem[] getAll() {
+        MovieItem[] result = new MovieItem[films.length];
+        for (int i = 0; i < result.length; i++) {
+            int index = films.length - i - 1;
+            result[i] = films[index];
+        }
+        return result;
+    }
 
-    public MovieItem[] takeTheLatestMovie(int limitFilms) {
-        int numFilm = Math.min(items.length, limitFilms);
+
+    public MovieItem[] takeTheLatestMovie() {
+        int numFilm = Math.min(films.length, limitFilms);
         MovieItem[] result = new MovieItem[numFilm];
         for (int i = 0; i < result.length; i++) {
-            int index = items.length - i - 1;
-            result[i] = items[index];
+            int index = films.length - i - 1;
+            result[i] = films[index];
         }
         return result;
     }
