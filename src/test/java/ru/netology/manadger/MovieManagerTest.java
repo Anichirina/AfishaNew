@@ -97,12 +97,11 @@ class MovieManagerTest {
 
         assertArrayEquals(expected, actual);
     }
-
+//добавление фильмов больше 10
     @Test
     public void moreThanLimit10Films() {
         MovieManager manager = new MovieManager(11);
         manager.add(film1);
-        manager.add(film11);
         manager.add(film2);
         manager.add(film3);
         manager.add(film4);
@@ -112,8 +111,9 @@ class MovieManagerTest {
         manager.add(film8);
         manager.add(film9);
         manager.add(film10);
+        manager.add(film11);
         MovieItem[] actual = manager.takeTheLatestMovie();
-        MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3, film2, film11, film1};
+        MovieItem[] expected = new MovieItem[]{film11, film10, film9, film8, film7, film6, film5, film4, film3, film2,  film1};
         assertArrayEquals(expected, actual);
     }
 
@@ -121,6 +121,7 @@ class MovieManagerTest {
     public void shouldGetAll() {
         MovieItem[] actual = manager.getAll();
         MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3, film2, film1, film11};
+        assertArrayEquals(expected, actual);
     }
 
 }
