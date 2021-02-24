@@ -120,7 +120,7 @@ class MovieManagerTest {
     @Test
     public void shouldGetAll() {
         MovieItem[] actual = manager.getAll();
-        MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3, film2, film1, film11};
+        MovieItem[] expected = new MovieItem[]{film10, film9, film8, film7, film6, film5, film4, film3, film2, film11, film1};
         assertArrayEquals(expected, actual);
     }
 
